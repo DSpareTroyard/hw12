@@ -13,6 +13,6 @@ def main_page():
 @search_blueprint.route('/search/')
 def search_page():
     s = request.args.get('s')
-    posts = utils.get_posts_from_json("main/posts.json")
+    posts = utils.get_posts_from_json("posts.json")
     filtered_posts = utils.filter_posts(posts, s)
     return render_template("post_list.html", s=s, posts=filtered_posts)
