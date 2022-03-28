@@ -13,4 +13,8 @@ def loader_page():
 def upload_page():
     picture = request.files.get('picture')
     content = request.form.get('content')
-    return render_template("post_uploaded.html")
+    post = utils.upload_post(picture, content, "posts.json")
+    if post:
+        return render_template("post_uploaded.html", post=post)
+    else:
+        return "Файл не загружен<br/><a href = \"/post/\">Назад</a>"
